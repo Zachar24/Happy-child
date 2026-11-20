@@ -50,9 +50,9 @@ const nav = [
 ];
 
 const socials = [
-  { label: 'Telegram канал', bg: 'bg-blue-600', icon: <Telegram /> },
-  { label: 'MAX', bg: 'bg-purple-700', icon: <Message /> },
-  { label: 'Чат поддержки', bg: 'bg-pink-600', icon: <Chat /> },
+  { label: 'Telegram канал', bg: 'bg-blue-600', icon: <Telegram />, href: 'https://t.me/tokindergartenwithlove' },
+  { label: 'MAX', bg: 'bg-purple-700', icon: <Message />, href: '#' },
+  { label: 'Чат поддержки', bg: 'bg-pink-600', icon: <Chat />, href: '#' },
 ];
 
 export default function Footer({ onNavigate }) {
@@ -108,14 +108,16 @@ export default function Footer({ onNavigate }) {
           <h3 className="font-semibold">Мы в соцсетях</h3>
           <div className="mt-3 space-y-2">
             {socials.map((s) => (
-            <a
-              key={s.label}
-              href="#"
-              className={`flex items-center gap-2 rounded-lg ${s.bg} px-4 py-2 text-sm font-medium shadow transition hover:brightness-110`}
-            >
-              {s.icon}
-              {s.label}
-            </a>
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-2 rounded-lg ${s.bg} px-4 py-2 text-sm font-medium shadow transition hover:brightness-110`}
+              >
+                {s.icon}
+                {s.label}
+              </a>
             ))}
           </div>
         </div>
