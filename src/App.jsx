@@ -27,7 +27,7 @@ export default function App() {
       <main className="flex-1">
         {page === 'home' && <Home onNavigate={setPage} onOpenArticle={openArticle} />}
         {page === 'about' && <About onNavigate={setPage} />}
-        {page === 'community' && <Community onNavigate={setPage} />}
+        {page === 'community' && <Community onOpenArticle={openArticle} />}
         {page === 'article' && <Article id={articleId} onNavigate={setPage} />}
         {page === 'assistant' && <Assistant onNavigate={setPage} />}
         {page === 'login' && <Login onNavigate={setPage} />}
