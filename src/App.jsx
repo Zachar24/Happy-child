@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,6 +14,10 @@ import Article from './pages/Article';
 export default function App() {
   const [page, setPage] = useState('home');
   const [article, setArticle] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   const openArticle = (id) => {
     const found = articles.find((a) => a.id === id);
