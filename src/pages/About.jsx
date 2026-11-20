@@ -90,11 +90,36 @@ const reasons = [
 ];
 
 const doing = [
-  { icon: <BookOpen />, color: 'bg-blue-500', emoji: <Briefcase />, title: 'Консультируем со знанием дела', text: '...' },
-  { icon: <Users />, color: 'bg-pink-500', emoji: <Users c="h-4 w-4 text-pink-400" />, title: 'Делимся опытом', text: '...' },
-  { icon: <Message />, color: 'bg-purple-500', emoji: <GraduationCap c="h-4 w-4 text-purple-400" />, title: 'Учим общаться с воспитателями', text: '...' },
-  { icon: <Puzzle />, color: 'bg-violet-500', emoji: <Book c="h-4 w-4 text-purple-400" />, title: 'Создаем полезный контент', text: '...' },
+  {
+    icon: <BookOpen />,
+    color: 'bg-blue-500',
+    emoji: <Briefcase />,
+    title: 'Консультируем со знанием дела',
+    text: 'Здесь вы найдете проверенные советы психологов и педагогов о том, как подготовить ребенка к саду и поддержать его в первые недели.',
+  },
+  {
+    icon: <Users />,
+    color: 'bg-pink-500',
+    emoji: <Users c="h-4 w-4 text-pink-400" />,
+    title: 'Делимся опытом',
+    text: 'Вместе с опытными родителями мы собираем реальные лайфхаки: от выбора самого удобного рюкзака до ритуалов, которые помогут легче расставаться по утрам.',
+  },
+  {
+    icon: <Message />,
+    color: 'bg-purple-500',
+    emoji: <GraduationCap c="h-4 w-4 text-purple-400" />,
+    title: 'Учим общаться с воспитателями',
+    text: 'Мы расскажем, как выстроить доверительный диалог с персоналом сада, чтобы вы всегда были спокойны за своего ребенка.',
+  },
+  {
+    icon: <Puzzle />,
+    color: 'bg-violet-500',
+    emoji: <Book c="h-4 w-4 text-purple-400" />,
+    title: 'Создаем полезный контент',
+    text: 'У нас вы не просто читаете статьи, а становитесь частью процесса: участвуете в обсуждениях, задаете вопросы и получаете поддержку от тех, кто уже это прошел.',
+  },
 ];
+
 
 export default function About({ onNavigate }) {
   return (

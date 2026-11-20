@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 
 /* Плеер встроен прямо сюда — отдельный файл ArticlePlayer больше не нужен */
 function AudioPlayer({ title, desc, src }) {
@@ -52,6 +53,9 @@ function AudioPlayer({ title, desc, src }) {
 }
 
 export default function Article({ article, onBack }) {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [article]);
   if (!article) return null;
 
   return (
