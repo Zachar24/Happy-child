@@ -9,7 +9,7 @@ export default function Register({ onNavigate }) {
       {/* Левая панель — фиксированная ширина */}
       <div className="hidden w-[440px] shrink-0 rounded-2xl bg-[#12141c] p-8 lg:block">
         <div className="flex items-center gap-3">
-          <img src="/logo.svg" alt="Счастливый ребёнок" className="h-10 w-10 rounded-lg" />
+          <img src="/Happy-child/logo.svg" alt="Счастливый ребенок" className="h-10 w-10 rounded-lg"/>
           <span className="text-lg font-bold text-white">Счастливый ребёнок</span>
         </div>
 
