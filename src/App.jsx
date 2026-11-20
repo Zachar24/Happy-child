@@ -7,28 +7,30 @@ import Community from './pages/Community';
 import Assistant from './pages/Assistant';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { articles } from './data/articles';
 import Article from './pages/Article';
 
 export default function App() {
   const [page, setPage] = useState('home');
-  const [articleId, setArticleId] = useState(null);
+  const [article, setArticle] = useState(null);
 
   const openArticle = (id) => {
-    setArticleId(id);
+    const found = articles.find((a) => a.id === id);
+    setArticle(found);
     setPage('article');
   };
 
   const isAuthPage = page === 'login' || page === 'register';
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#1a1a1f] text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-600 via-purple-600 to-purple-900 text-white">
       {!isAuthPage && <Header activePage={page} onNavigate={setPage} />}
 
       <main className="flex-1">
-        {page === 'home' && <Home onNavigate={setPage} onOpenArticle={openArticle} />}
+        {page === 'home' && <Home onNavigate={setPage} />}
         {page === 'about' && <About onNavigate={setPage} />}
-        {page === 'community' && <Community onOpenArticle={openArticle} />}
-        {page === 'article' && <Article id={articleId} onNavigate={setPage} />}
+        {page === 'community' && <Community onNavigate={setPage} onOpenArticle={openArticle} />}
+        {page === 'article' && <Article article={article} onBack={() => setPage('community')} />}
         {page === 'assistant' && <Assistant onNavigate={setPage} />}
         {page === 'login' && <Login onNavigate={setPage} />}
         {page === 'register' && <Register onNavigate={setPage} />}
@@ -38,3 +40,4 @@ export default function App() {
     </div>
   );
 }
+
