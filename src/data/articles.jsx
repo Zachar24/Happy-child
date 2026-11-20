@@ -1,7 +1,29 @@
+const IconBook = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+  </svg>
+);
+
+const IconBackpack = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
+    <path d="M9 6v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6" />
+    <path d="M9 2h6" />
+  </svg>
+);
+
+const IconClock = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 6v6l4 2" />
+  </svg>
+);
+
+
 export const articles = [
   {
     id: 'prepare',
-    icon: '📚', bg: 'bg-blue-500',
+    icon: <IconBook />, bg: 'bg-blue-500',
     title: 'Как подготовить ребенка к детскому саду',
     meta: '15 марта 2026 • Педагог-психолог Анна Иванова',
     views: 4,
@@ -19,7 +41,7 @@ export const articles = [
   },
   {
     id: 'wardrobe',
-    icon: '🎒', bg: 'bg-pink-500',
+    icon: <IconBackpack />, bg: 'bg-pink-500',
     title: 'Что положить в шкафчик: полный список',
     meta: '10 марта 2026 • Воспитатель Елена Смирнова',
     views: 3,
@@ -50,7 +72,7 @@ export const articles = [
   },
   {
     id: 'adaptation',
-    icon: '⏰', bg: 'bg-purple-500',
+    icon: <IconClock />, bg: 'bg-purple-500',
     title: 'Сколько длится адаптация к саду',
     meta: '5 марта 2026 • Психолог Мария Петрова',
     views: 3,

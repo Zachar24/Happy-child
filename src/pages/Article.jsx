@@ -70,7 +70,14 @@ export default function Article({ article, onBack }) {
           <h1 className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">
             {article.title}
           </h1>
-          <p className="mt-2 text-xs text-white/85">📅 {article.meta}</p>
+          <p className="mt-2 flex items-center gap-1.5 text-xs text-white/85">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5">
+              <path d="M8 2v4" /><path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+            </svg>
+            {article.meta}
+          </p>
         </div>
 
         {/* Текст статьи */}

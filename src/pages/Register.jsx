@@ -1,5 +1,44 @@
 import { useState } from 'react';
 
+const User = ({ c = 'h-4 w-4' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+
+const ClipboardList = ({ c = 'h-5 w-5' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <rect width="8" height="4" x="8" y="2" rx="1" />
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+    <path d="M9 12h6" />
+    <path d="M9 16h4" />
+  </svg>
+);
+
+const GraduationCap = ({ c = 'h-5 w-5' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+  </svg>
+);
+
+const Users = ({ c = 'h-5 w-5' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
+
+const Shield = ({ c = 'h-3.5 w-3.5' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  </svg>
+);
+
+
 export default function Register({ onNavigate }) {
   const [showPassword, setShowPassword] = useState(false);
   const [agreed, setAgreed] = useState(false);
@@ -26,7 +65,7 @@ export default function Register({ onNavigate }) {
 
         <div className="mt-6 space-y-3">
           <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5">
-            <span className="text-xl">📋</span>
+            <span className="text-pink-400"><ClipboardList /></span>
             <div>
               <p className="text-sm font-semibold text-white">Чек-листы адаптации</p>
               <p className="text-xs text-slate-400">
@@ -35,7 +74,7 @@ export default function Register({ onNavigate }) {
             </div>
           </div>
           <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5">
-            <span className="text-xl">👩‍🏫</span>
+            <span className="text-pink-400"><GraduationCap /></span>
             <div>
               <p className="text-sm font-semibold text-white">Ответы педагогов и психологов</p>
               <p className="text-xs text-slate-400">
@@ -44,7 +83,7 @@ export default function Register({ onNavigate }) {
             </div>
           </div>
           <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-3.5">
-            <span className="text-xl">👥</span>
+            <span className="text-pink-400"><Users /></span>
             <div>
               <p className="text-sm font-semibold text-white">Сообщество родителей</p>
               <p className="text-xs text-slate-400">
@@ -55,11 +94,11 @@ export default function Register({ onNavigate }) {
         </div>
 
         <div className="mt-6 flex flex-wrap gap-2">
-          <span className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300">
-            ✓ Бесплатно
+          <span className="flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300">
+            <Check /> Бесплатно
           </span>
-          <span className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300">
-            🔒 Данные под защитой
+          <span className="flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300">
+            <Shield /> Данные под защитой
           </span>
         </div>
 
@@ -89,7 +128,7 @@ export default function Register({ onNavigate }) {
             <div>
               <p className="mb-1.5 text-xs text-slate-400">О вас</p>
               <div className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-3 focus-within:border-blue-500">
-                <span className="text-blue-400">👤</span>
+                <span className="text-blue-400"><User /></span>
                 <input
                   type="text"
                   placeholder="Ваше имя"
@@ -101,7 +140,7 @@ export default function Register({ onNavigate }) {
             <div>
               <p className="mb-1.5 text-xs text-slate-400">Данные для входа</p>
               <div className="mb-3 flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-3 focus-within:border-blue-500">
-                <span className="text-blue-400">✉</span>
+                <span className="text-blue-400"><Mail /></span>
                 <input
                   type="email"
                   placeholder="Email"
@@ -109,7 +148,7 @@ export default function Register({ onNavigate }) {
                 />
               </div>
               <div className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-3 focus-within:border-blue-500">
-                <span className="text-blue-400">🔒</span>
+                <span className="text-blue-400"><Lock /></span>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Придумайте пароль"
@@ -137,7 +176,11 @@ export default function Register({ onNavigate }) {
                   </svg>
                 </button>
               </div>
-              <p className="mt-2 text-xs text-slate-500">✓ 8+ символов ✓ буквы ✓ цифры</p>
+              <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-500">
+                <Check c="h-3 w-3" /> 8+ символов
+                <Check c="h-3 w-3" /> буквы
+                <Check c="h-3 w-3" /> цифры
+              </p>
             </div>
 
             <label className="flex items-start gap-2 text-xs text-slate-300">
