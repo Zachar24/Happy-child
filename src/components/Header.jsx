@@ -18,11 +18,7 @@ export default function Header({ active, onNavigate }) {
           }}
           className="flex items-center gap-2"
         >
-          <img
-            src={logo.svg}
-            alt="Счастливый ребенок"
-            className="h-12 w-12 rounded-lg"
-          />
+          <img src="/Happy-child/logo.svg" alt="Счастливый ребенок" className="h-12 w-12 rounded-lg"/>
           <span className="text-sm font-bold text-white sm:text-base">
             Счастливый{' '}
             <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
