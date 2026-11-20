@@ -1,3 +1,5 @@
+import logo from '../assets/logo.svg'
+
 const navItems = [
   { id: 'home', label: 'Главная', icon: '🏠' },
   { id: 'about', label: 'О проекте', icon: '📖' },
@@ -17,7 +19,7 @@ export default function Header({ active, onNavigate }) {
           className="flex items-center gap-2"
         >
           <img
-            src="/logo.svg"
+            src={logo.svg}
             alt="Счастливый ребенок"
             className="h-12 w-12 rounded-lg"
           />

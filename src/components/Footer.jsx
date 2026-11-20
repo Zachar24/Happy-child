@@ -1,3 +1,5 @@
+import logo from '../assets/logo.svg'
+
 const nav = [
   { id: 'home', label: 'Главная' },
   { id: 'about', label: 'О проекте' },
@@ -18,7 +20,7 @@ export default function Footer({ onNavigate }) {
         <div>
           <p className="flex items-center gap-2 font-bold">
             <span>
-                <img src="/logo.svg" alt="Счастливый ребёнок" className="h-14 w-14" />
+                <img src={logo.svg} alt="Счастливый ребёнок" className="h-14 w-14" />
             </span>
             Счастливый ребенок
           </p>
