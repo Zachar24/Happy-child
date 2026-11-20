@@ -66,9 +66,9 @@ const trust = [
 ];
 
 const tools = [
-  { icon: <ClipboardCheck />, bg: 'bg-blue-500', title: 'Чек-лист', text: '«Я иду в детский сад!»' },
-  { icon: <Clipboard />, bg: 'bg-pink-500', title: 'Памятка', text: '«Моя полная в шкафчик»' },
-  { icon: <Puzzle />, bg: 'bg-purple-500', title: 'Список', text: '«Какие игрушки положить»' },
+  { icon: <ClipboardCheck />, bg: 'bg-blue-500', title: 'Чек-лист', text: '«Готов ли ребенок к саду?»' },
+  { icon: <Clipboard />, bg: 'bg-pink-500', title: 'Памятка', text: '«Что положить в шкафчик?»' },
+  { icon: <Puzzle />, bg: 'bg-purple-500', title: 'Список', text: '«Книги и игры для подготовки»' },
   { icon: <Calendar />, bg: 'bg-violet-500', title: 'Дневник', text: '«Адаптация ребенка»' },
 ];
 
