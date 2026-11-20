@@ -23,7 +23,7 @@ export default function App() {
   const isAuthPage = page === 'login' || page === 'register';
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-600 via-purple-600 to-purple-900 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-400 via-purple-500 to-purple-600 text-white">
       {!isAuthPage && <Header activePage={page} onNavigate={setPage} />}
 
       <main className="flex-1">
