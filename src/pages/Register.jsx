@@ -38,6 +38,26 @@ const Shield = ({ c = 'h-3.5 w-3.5' }) => (
   </svg>
 );
 
+const Mail = ({ c = 'h-4 w-4' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <rect width="20" height="16" x="2" y="4" rx="2" />
+    <path d="m22 7-8.971 5.927a2 2 0 0 1-2.058 0L2 7" />
+  </svg>
+);
+
+const Lock = ({ c = 'h-4 w-4' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <rect width="18" height="11" x="3" y="11" rx="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </svg>
+);
+
+const Check = ({ c = 'h-3.5 w-3.5' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);
+
 
 export default function Register({ onNavigate }) {
   const [showPassword, setShowPassword] = useState(false);
