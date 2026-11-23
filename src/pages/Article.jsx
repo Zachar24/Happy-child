@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
+    const IconEye = ({ c = 'h-4 w-4' }) => (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    );
 
 /* Плеер встроен прямо сюда — отдельный файл ArticlePlayer больше не нужен */
 function AudioPlayer({ title, desc, src }) {
@@ -98,7 +104,9 @@ export default function Article({ article, onBack }) {
             <button className="rounded-full border border-zinc-700 px-4 py-1.5 text-xs text-slate-300 transition hover:border-pink-500 hover:text-pink-400">
               ♥ 0
             </button>
-            <span className="text-xs text-slate-500">👁 {article.views} просмотров</span>
+          <span className="flex items-center gap-1.5 text-xs text-slate-500">
+            <IconEye /> {article.views} просмотров
+          </span>
           </div>
         </div>
       </article>
