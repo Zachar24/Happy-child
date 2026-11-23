@@ -43,7 +43,7 @@ export default function App() {
       case 'article':
         return <Article articleId={articleId} onNavigate={setPage} />;
       case 'community':
-        return <Community />;
+        return <Community onOpenArticle={openArticle} onNavigate={setPage} />;
       case 'assistant':
         return <Assistant />;
       case 'contacts':

@@ -52,7 +52,7 @@ function AudioPlayer({ title, desc, src }) {
   );
 }
 
-export default function Community({ onOpenArticle }) {
+export default function Community({ onOpenArticle, onNavigate }) {
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6">
       <section className="pt-12 text-center">
@@ -81,7 +81,7 @@ export default function Community({ onOpenArticle }) {
                   {a.text[0]} <span className="text-slate-500">{a.text[1]}</span>
                 </p>
                 <button
-                  onClick={() => onOpenArticle('prepare')}
+                  onClick={() => onOpenArticle('article.id')}
                   className="mt-3 text-xs font-semibold text-pink-500 hover:text-pink-400"
                 >
                   Читать статью →
