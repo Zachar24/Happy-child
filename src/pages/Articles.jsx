@@ -25,41 +25,51 @@ export default function Articles({ onOpenArticle }) {
       </p>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article) => (
-          <article
-            key={article.id}
-            className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#12141c] transition hover:border-white/25"
-          >
-            <div className={`flex h-32 items-center justify-center text-white ${article.bg}`}>
-              {article.icon}
-            </div>
+        {articles.map((article) => {
+          const preview = Array.isArray(article.text)
+            ? article.text[0]
+            : article.text || '';
+          const views = article.views ?? 0;
 
-            <div className="flex flex-1 flex-col p-5">
-              <h2 className="text-lg font-bold leading-snug text-white">
-                {article.title}
-              </h2>
-              <p className="mt-1 text-xs text-slate-400">{article.meta}</p>
-
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-300">
-                {article.text[0].slice(0, 120)}…
-              </p>
-
-              <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
-                <span className="flex items-center gap-1.5 text-xs text-slate-500">
-                  <IconEye /> {article.views} просмотров
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onOpenArticle(article.id)}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300"
-                >
-                  Читать <ArrowRight />
-                </button>
+          return (
+            <article
+              key={article.id}
+              className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#12141c] transition hover:border-white/25"
+            >
+              <div className={`flex h-32 items-center justify-center text-white ${article.bg || 'bg-gradient-to-br from-blue-500 to-pink-600'}`}>
+                {article.icon}
               </div>
-            </div>
-          </article>
-        ))}
+
+              <div className="flex flex-1 flex-col p-5">
+                <h2 className="text-lg font-bold leading-snug text-white">
+                  {article.title}
+                </h2>
+                <p className="mt-1 text-xs text-slate-400">{article.meta}</p>
+
+                {preview && (
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-300">
+                    {String(preview).slice(0, 120)}…
+                  </p>
+                )}
+
+                <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
+                  <span className="flex items-center gap-1.5 text-xs text-slate-500">
+                    <IconEye /> {views} просмотров
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onOpenArticle(article.id)}
+                    className="flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300"
+                  >
+                    Читать <ArrowRight />
+                  </button>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );
 }
+
