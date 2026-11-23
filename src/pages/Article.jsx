@@ -82,12 +82,15 @@ export default function Article({ articleId, onNavigate }) {
     );
   }
 
-  /* текст статьи может лежать в поле text (строка или массив) — обрабатываем оба варианта */
   const paragraphs = Array.isArray(article.text)
     ? article.text
     : article.text
       ? [article.text]
       : [];
+
+  {paragraphs.map((p, i) => (
+    <p key={i}>{p}</p>
+  ))}
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
