@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import { articles } from '../data/articles';
 
-    const IconEye = ({ c = 'h-4 w-4' }) => (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
-        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    );
+const IconEye = ({ c = 'h-4 w-4' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
 
 /* Плеер встроен прямо сюда — отдельный файл ArticlePlayer больше не нужен */
 function AudioPlayer({ title, desc, src }) {
@@ -41,6 +42,7 @@ function AudioPlayer({ title, desc, src }) {
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={toggle}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-md hover:shadow-lg transition-all"
             aria-label={playing ? 'Пауза' : 'Слушать'}
@@ -58,16 +60,40 @@ function AudioPlayer({ title, desc, src }) {
   );
 }
 
-export default function Article({ article, onBack }) {
-    useEffect(() => {
+export default function Article({ articleId, onNavigate }) {
+  const article = articles.find((a) => a.id === articleId);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }, [article]);
-  if (!article) return null;
+  }, [articleId]);
+
+  if (!article) {
+    return (
+      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+        <p className="text-slate-300">Статья не найдена.</p>
+        <button
+          type="button"
+          onClick={() => onNavigate('articles')}
+          className="mt-4 rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 px-4 py-2 text-sm font-semibold text-white"
+        >
+          ← Ко всем статьям
+        </button>
+      </div>
+    );
+  }
+
+  /* текст статьи может лежать в поле text (строка или массив) — обрабатываем оба варианта */
+  const paragraphs = Array.isArray(article.text)
+    ? article.text
+    : article.text
+      ? [article.text]
+      : [];
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <button
-        onClick={onBack}
+        type="button"
+        onClick={() => onNavigate('articles')}
         className="flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
       >
         ← Назад к статьям
@@ -92,7 +118,7 @@ export default function Article({ article, onBack }) {
 
         {/* Текст статьи */}
         <div className="space-y-3 p-6 sm:p-8">
-          {article.text.map((p, i) => (
+          {paragraphs.map((p, i) => (
             <p key={i} className="text-sm leading-relaxed text-slate-300 sm:text-base">
               {p}
             </p>
@@ -101,12 +127,15 @@ export default function Article({ article, onBack }) {
           <AudioPlayer title={article.audio} desc={article.audioDesc} src={article.src} />
 
           <div className="flex items-center justify-between border-t border-zinc-800 pt-4">
-            <button className="rounded-full border border-zinc-700 px-4 py-1.5 text-xs text-slate-300 transition hover:border-pink-500 hover:text-pink-400">
+            <button
+              type="button"
+              className="rounded-full border border-zinc-700 px-4 py-1.5 text-xs text-slate-300 transition hover:border-pink-500 hover:text-pink-400"
+            >
               ♥ 0
             </button>
-          <span className="flex items-center gap-1.5 text-xs text-slate-500">
-            <IconEye /> {article.views} просмотров
-          </span>
+            <span className="flex items-center gap-1.5 text-xs text-slate-500">
+              <IconEye /> {article.views ?? 0} просмотров
+            </span>
           </div>
         </div>
       </article>
