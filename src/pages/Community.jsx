@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { articles } from './Articles';
+import { articles } from '../data/articles';
 
 /* Плеер без полосы прокрутки: кнопка плей + название, время 0:00 / 0:01 */
 function AudioPlayer({ title, desc, src }) {
