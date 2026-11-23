@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { articles } from './data/articles';
 import Article from './pages/Article';
+import Contacts from './pages/Contacts';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -39,6 +40,7 @@ export default function App() {
         {page === 'assistant' && <Assistant onNavigate={setPage} />}
         {page === 'login' && <Login onNavigate={setPage} />}
         {page === 'register' && <Register onNavigate={setPage} />}
+        {page === 'contacts' && <Contacts />}
       </main>
 
       {!isAuthPage && <Footer onNavigate={setPage} />}

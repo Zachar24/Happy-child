@@ -79,7 +79,7 @@ export default function Footer({ onNavigate }) {
               <li key={n.label}>
                 <button
                   className="hover:text-white hover:underline"
-                  onClick={() => onNavigate(n.id === 'contacts' ? 'home' : n.id)}
+                  onClick={() => onNavigate(n.id)}
                 >
                   {n.label}
                 </button>
