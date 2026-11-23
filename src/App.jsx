@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Articles from './data/articles';
 import Article from './pages/Article';
 import Community from './pages/Community';
 import Assistant from './pages/Assistant';
@@ -38,8 +37,6 @@ export default function App() {
     switch (page) {
       case 'about':
         return <About onNavigate={setPage} />;
-      case 'articles':
-        return <Articles onOpenArticle={openArticle} />;
       case 'article':
         return <Article articleId={articleId} onNavigate={setPage} />;
       case 'community':
