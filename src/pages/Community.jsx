@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react';
 import { articles } from '../data/articles';
 
-/* Плеер без полосы прокрутки: кнопка плей + название, время 0:00 / 0:01 */
 function AudioPlayer({ title, desc, src }) {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
@@ -16,37 +15,28 @@ function AudioPlayer({ title, desc, src }) {
     setPlaying(true);
     if (audio && src) {
       audio.currentTime = 0;
-      audio.play().catch(() => simulate());
+      audio.play().catch(() => setTimeout(() => setPlaying(false), 1000));
     } else {
-      simulate();
+      setTimeout(() => setPlaying(false), 1000);
     }
   };
 
-  /* если файла нет — секундная пауза, чтобы кнопка не «висела» */
-  const simulate = () => {
-    setTimeout(() => setPlaying(false), 1000);
-  };
-
-  const handleEnd = () => setPlaying(false);
-
   return (
     <div className="mt-4 rounded-xl border border-zinc-700 bg-zinc-800 p-4">
-      <audio ref={audioRef} src={src} onEnded={handleEnd} preload="none" />
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={toggle}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-md hover:shadow-lg transition-all"
-            aria-label={playing ? 'Пауза' : 'Слушать'}
-          >
-            {playing ? '⏸' : '▶'}
-          </button>
-          <div>
-            <p className="text-sm font-semibold text-white">{title}</p>
-            <p className="text-xs text-slate-500">{desc}</p>
-          </div>
+      <audio ref={audioRef} src={src} onEnded={() => setPlaying(false)} preload="none" />
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggle}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white shadow-md transition-all hover:shadow-lg"
+          aria-label={playing ? 'Пауза' : 'Слушать'}
+        >
+          {playing ? '⏸' : '▶'}
+        </button>
+        <div>
+          <p className="text-sm font-semibold text-white">{title}</p>
+          <p className="text-xs text-slate-500">{desc}</p>
         </div>
-        <span className="text-xs text-slate-500">0:01</span>
       </div>
     </div>
   );
@@ -77,11 +67,10 @@ export default function Community({ onOpenArticle, onNavigate }) {
               <div>
                 <h2 className="text-lg font-bold text-white sm:text-xl">{a.title}</h2>
                 <p className="mt-1 text-xs text-slate-500">{a.meta}</p>
-                <p className="mt-2 text-sm text-slate-300">
-                  {a.text[0]} <span className="text-slate-500">{a.text[1]}</span>
-                </p>
+                <p className="mt-2 text-sm text-slate-300">{a.text[0]}</p>
                 <button
-                  onClick={() => onOpenArticle('a.id')}
+                  type="button"
+                  onClick={() => onOpenArticle(a.id)}
                   className="mt-3 text-xs font-semibold text-pink-500 hover:text-pink-400"
                 >
                   Читать статью →
@@ -92,7 +81,7 @@ export default function Community({ onOpenArticle, onNavigate }) {
             <AudioPlayer title={a.audio} desc={a.audioDesc} src={a.src} />
 
             <div className="mt-4 border-t border-zinc-800 pt-3">
-              <button className="text-xs text-slate-400 transition hover:text-pink-400">
+              <button type="button" className="text-xs text-slate-400 transition hover:text-pink-400">
                 ♥ Нравится
               </button>
             </div>
