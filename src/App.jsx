@@ -1,50 +1,64 @@
-
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import About from './pages/About';
+import Articles from './pages/Articles';
+import Article from './pages/Article';
 import Community from './pages/Community';
 import Assistant from './pages/Assistant';
+import Contacts from './pages/Contacts';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { articles } from './data/articles';
-import Article from './pages/Article';
-import Contacts from './pages/Contacts';
+import { getCurrentUser, logout } from './auth';
 
 export default function App() {
   const [page, setPage] = useState('home');
-  const [article, setArticle] = useState(null);
+  const [articleId, setArticleId] = useState(null);
+  const [user, setUser] = useState(getCurrentUser());
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
 
+  const handleAuth = () => setUser(getCurrentUser());
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+    setPage('home');
+  };
+
   const openArticle = (id) => {
-    const found = articles.find((a) => a.id === id);
-    setArticle(found);
+    setArticleId(id);
     setPage('article');
   };
 
-  const isAuthPage = page === 'login' || page === 'register';
+  const renderPage = () => {
+    switch (page) {
+      case 'articles':
+        return <Articles onOpenArticle={openArticle} />;
+      case 'article':
+        return <Article articleId={articleId} onNavigate={setPage} />;
+      case 'community':
+        return <Community />;
+      case 'assistant':
+        return <Assistant />;
+      case 'contacts':
+        return <Contacts />;
+      case 'login':
+        return <Login onNavigate={setPage} onAuth={handleAuth} />;
+      case 'register':
+        return <Register onNavigate={setPage} onAuth={handleAuth} />;
+      default:
+        return <Home onNavigate={setPage} onOpenArticle={openArticle} />;
+    }
+  };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#1a1a1f] text-white">
-      {!isAuthPage && <Header activePage={page} onNavigate={setPage} />}
-
-      <main className="flex-1">
-        {page === 'home' && <Home onNavigate={setPage} />}
-        {page === 'about' && <About onNavigate={setPage} />}
-        {page === 'community' && <Community onNavigate={setPage} onOpenArticle={openArticle} />}
-        {page === 'article' && <Article article={article} onBack={() => setPage('community')} />}
-        {page === 'assistant' && <Assistant onNavigate={setPage} />}
-        {page === 'login' && <Login onNavigate={setPage} />}
-        {page === 'register' && <Register onNavigate={setPage} />}
-        {page === 'contacts' && <Contacts />}
-      </main>
-
-      {!isAuthPage && <Footer onNavigate={setPage} />}
+    <div className="min-h-screen bg-[#0b0d13] text-white">
+      <Header page={page} onNavigate={setPage} user={user} onLogout={handleLogout} />
+      <main>{renderPage()}</main>
+      <Footer onNavigate={setPage} />
     </div>
   );
 }
-
