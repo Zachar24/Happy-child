@@ -57,11 +57,19 @@ export default function App() {
     }
   };
 
+  /* На страницах входа и регистрации шапка и подвал не нужны —
+     у форм своя полноэкранная вёрстка */
+  const isAuthPage = page === 'login' || page === 'register';
+
   return (
     <div className="min-h-screen bg-[#0b0d13] text-white">
-      <Header page={page} onNavigate={setPage} user={user} onLogout={handleLogout} />
+      {!isAuthPage && (
+        <Header page={page} onNavigate={setPage} user={user} onLogout={handleLogout} />
+      )}
+
       <main>{renderPage()}</main>
-      <Footer onNavigate={setPage} />
+
+      {!isAuthPage && <Footer onNavigate={setPage} />}
     </div>
   );
 }
