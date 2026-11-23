@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Articles from './pages/Articles';
+import Articles from './data/articles';
 import Article from './pages/Article';
 import Community from './pages/Community';
 import Assistant from './pages/Assistant';
