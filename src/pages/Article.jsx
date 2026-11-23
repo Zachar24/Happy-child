@@ -93,10 +93,10 @@ export default function Article({ articleId, onNavigate }) {
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
       <button
         type="button"
-        onClick={() => onNavigate('articles')}
+        onClick={() => onNavigate('community')}
         className="flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
       >
-        ← Назад к статьям
+        ← Назад к сообществу
       </button>
 
       <article className="mt-6 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900">
