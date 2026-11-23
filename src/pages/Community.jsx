@@ -81,7 +81,7 @@ export default function Community({ onOpenArticle, onNavigate }) {
                   {a.text[0]} <span className="text-slate-500">{a.text[1]}</span>
                 </p>
                 <button
-                  onClick={() => onOpenArticle('prepare')}
+                  onClick={() => onOpenArticle('article.id')}
                   className="mt-3 text-xs font-semibold text-pink-500 hover:text-pink-400"
                 >
                   Читать статью →
