@@ -58,15 +58,15 @@ export default function App() {
      у форм своя полноэкранная вёрстка */
   const isAuthPage = page === 'login' || page === 'register';
 
-  return (
-    <div className="min-h-screen bg-[#0b0d13] text-white">
-      {!isAuthPage && (
-        <Header page={page} onNavigate={setPage} user={user} onLogout={handleLogout} />
-      )}
+return (
+  <div className="flex min-h-screen flex-col bg-[#0b0d13] text-white">
+    {!isAuthPage && (
+      <Header page={page} onNavigate={setPage} user={user} onLogout={handleLogout} />
+    )}
 
-      <main>{renderPage()}</main>
+    <main className="flex-1">{renderPage()}</main>
 
-      {!isAuthPage && <Footer onNavigate={setPage} />}
-    </div>
-  );
+    {!isAuthPage && <Footer onNavigate={setPage} />}
+  </div>
+);
 }
