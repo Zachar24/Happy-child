@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import About from './pages/About';
 import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Community from './pages/Community';
@@ -35,6 +36,8 @@ export default function App() {
 
   const renderPage = () => {
     switch (page) {
+      case 'about':
+        return <About onNavigate={setPage} />;
       case 'articles':
         return <Articles onOpenArticle={openArticle} />;
       case 'article':
