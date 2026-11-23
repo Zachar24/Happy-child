@@ -55,9 +55,10 @@ export default function Header({ page, onNavigate, user, onLogout }) {
           {navItems.map((item) => (
             <button
               key={item.id}
+              type="button"
               onClick={() => onNavigate(item.id)}
               className={
-                activePage === item.id
+                page === item.id
                   ? 'flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 px-2.5 py-1.5 text-xs font-medium text-white shadow-md sm:px-3 sm:text-sm'
                   : 'flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 hover:bg-zinc-800 sm:px-3 sm:text-sm'
               }
@@ -105,18 +106,18 @@ export default function Header({ page, onNavigate, user, onLogout }) {
 
       {/* Мобильная навигация */}
       <nav className="flex gap-1 overflow-x-auto border-t border-white/10 px-4 py-2 md:hidden">
-        {NAV.map((n) => (
+        {navItems.map((item) => (
           <button
-            key={n.id}
+            key={item.id}
             type="button"
-            onClick={() => onNavigate(n.id)}
+            onClick={() => onNavigate(item.id)}
             className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-xs transition ${
-              page === n.id
+              page === item.id
                 ? 'bg-white/10 font-semibold text-white'
                 : 'text-slate-300 hover:bg-white/5'
             }`}
           >
-            {n.label}
+            {item.label}
           </button>
         ))}
       </nav>
