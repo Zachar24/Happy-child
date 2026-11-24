@@ -9,6 +9,7 @@ import Assistant from './pages/Assistant';
 import Contacts from './pages/Contacts';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 import { getCurrentUser, logout } from './auth';
 
 export default function App() {
@@ -48,7 +49,9 @@ export default function App() {
       case 'login':
         return <Login onNavigate={setPage} onAuth={handleAuth} />;
       case 'register':
-        return <Register onNavigate={setPage} onAuth={handleAuth} />;
+        return <Register onNavigate={setPage} onAuth={handleAuth} />;   
+      case 'profile':
+        return <Profile user={user} onLogout={handleLogout} onNavigate={setPage} />;
       default:
         return <Home onNavigate={setPage} onOpenArticle={openArticle} />;
     }

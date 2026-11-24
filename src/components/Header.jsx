@@ -1,3 +1,5 @@
+import UserMenu from './UserMenu';
+
 const User = ({ c = 'h-4 w-4' }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>
     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -68,21 +70,9 @@ export default function Header({ page, onNavigate, user, onLogout }) {
             </button>
           ))}
         </nav>
-
         <div className="flex items-center gap-2">
           {user ? (
-            <>
-              <span className="hidden items-center gap-1.5 text-sm text-slate-300 sm:flex">
-                <User /> {user.name}
-              </span>
-              <button
-                type="button"
-                onClick={onLogout}
-                className="rounded-lg border border-white/20 px-3 py-1.5 text-sm text-white transition hover:bg-white/10"
-              >
-                Выйти
-              </button>
-            </>
+            <UserMenu user={user} onNavigate={onNavigate} onLogout={onLogout} />
           ) : (
             <>
               <button
