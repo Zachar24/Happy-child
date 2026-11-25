@@ -47,7 +47,7 @@ export default function Header({ page, onNavigate, user, onLogout }) {
           onClick={() => onNavigate('home')}
           className="flex items-center gap-2.5"
         >
-          <img src="/Happy-child/logo.svg" alt="Счастливый ребёнок" className="h-9 w-9 rounded-lg" />
+          <img src="/Happy-child/logo.svg" alt="Счастливый ребёнок" className="h-12 w-12 rounded-lg" />
           <span className="text-base font-bold text-white sm:text-lg">
             Счастливый ребёнок
           </span>
