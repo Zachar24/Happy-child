@@ -62,7 +62,7 @@ export default function Footer({ onNavigate }) {
         <div>
           <p className="flex items-center gap-2 font-bold">
             <span>
-                <img src="/Happy-child/logo.svg" alt="Счастливый ребенок" className='h-14 w-14' rounded-lg/>
+                <img src="/Happy-child/logo.svg" alt="Счастливый ребенок" className='h-14 w-14 rounded-lg'/>
             </span>
             Счастливый ребенок
           </p>
